@@ -1,3 +1,19 @@
+# Alternatywa dla klas Category i Item:
+# 
+# from dataclasses import dataclass
+# 
+# @dataclass
+# class Category:
+#     id: int
+#     name: str
+# 
+# 
+# @dataclass
+# class Item:
+#     code: int
+#     category: "Category"
+
+
 class Category:
     def __init__(self, id, name):
         self._id = id

@@ -1,15 +1,21 @@
-import classes
+from pathlib import Path
+from recipe import Recipe
+
+
+storage_path = Path(__file__).parent / "../data/storage.txt"
+recipes_path = Path(__file__).parent / "../data/recipes.txt"
+codes_path = Path(__file__).parent / "../data/codes.txt"
 
 
 def get_storage():
-    storage = open("storage.txt", "r").read().split("\n")
+    storage = open(storage_path, "r").read().split("\n")
     storage.remove(storage[-1])
     storage = {product.split(" ")[0]: int(product.split(" ")[1]) for product in storage}
     return storage
 
 
 def update_storage(storage):
-    with open("storage.txt", "w") as f:
+    with open(storage_path, "w") as f:
         for product, amount in storage.items():
             f.write(f"{product} {amount}\n")
         f.close()
@@ -26,12 +32,12 @@ def get_recipe(rec):
 
     text = rec[4]
 
-    recipe = classes.Recipe(id, name, ingredients, text)
+    recipe = Recipe(id, name, ingredients, text)
     return recipe
 
 
 def get_recipes():
-    recipes = open("recipes.txt", "r").read().split("\n")
+    recipes = open(recipes_path, "r").read().split("\n")
     recipes_list = []
     rec = []
     for line in recipes:
@@ -56,7 +62,7 @@ def get_codes():
 
 
 def get_codes_text():
-    codes = open("codes.txt", "r").read()
+    codes = open(codes_path, "r").read()
     return codes
 
 
@@ -65,7 +71,7 @@ def add_code(code, category, amount):
     id = len(codes.split("\n"))
     new_code = f"{id} {code} {category} {amount}\n"
     codes += new_code
-    with open("codes.txt", "w") as f:
+    with open(codes_path, "w") as f:
         f.write(codes)
         f.close()
 
@@ -89,50 +95,3 @@ def get_code_info_from_input():
     category = input("What is this product? ")
     amount = int(input("How much of it is in this product? "))
     return category, amount
-
-
-def main():
-    while True:
-        print("what do u want to do? ")
-        print("1: scan")
-        print("2: show available recipes")
-        print("3: show all recipes")
-        print("4: show storage")
-        choice = input()
-        if choice == "1":
-            scan_code(input("scan code... : "))
-        elif choice == "2":
-            recipes = get_doable_recipes()
-            if recipes:
-                for rec in recipes:
-                    print(rec)
-                    print()
-                rec_choice = input("Which recipe do you want to make? (q = none)? ")
-                if rec_choice.isdigit():
-                    recipe = recipes[int(rec_choice) - 1]
-                    print(f"You make {recipe.name()}")
-                    update_storage(recipe.subtract_ingredients(get_storage()))
-            else:
-                print("No recipes available")
-        elif choice == "3":
-            recipes = get_recipes()
-            for rec in recipes:
-                print(rec)
-                print()
-            rec_choice = input("Which recipe do you want to check? (q = none)? ")
-            if rec_choice.isdigit():
-                recipe = recipes[int(rec_choice) - 1]
-                lacking = recipe.check(get_storage())
-                if lacking:
-                    print("Lacking ingredients: ")
-                    print(lacking)
-                else:
-                    print("This recipe is available")
-        elif choice == "4":
-            print(get_storage())
-        print("\n"*3)
-
-
-if __name__ == "__main__":
-    main()
-
