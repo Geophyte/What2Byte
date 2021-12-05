@@ -1,0 +1,7 @@
+chicken 210
+milk 10
+peanuts 10
+pasta 0
+tomato_sauce 10
+cheese 0
+water 50
