@@ -48,7 +48,7 @@ def save() -> None:
     """
     This will save new list and dict to their files
     """
-    dict_file = open(product_base_name, "w")
+    dict_file = open(barcode_base_name, "w")
     json.dump(product, dict_file)  # dups product dict into file product_base.py
     dict_file.close()
 
@@ -59,10 +59,10 @@ def save() -> None:
 
 if __name__ == "__main__":
     # definition of file adress
-    product_base_name = "./data/product_base.json"
+    barcode_base_name = "./data/barcode_base.json"
     categories_list_name = "./data/categories_list.json"
     try:  # tries to open files if failes saves blanc dict and list to create blank database file
-        product = json.load(open(product_base_name))
+        product = json.load(open(barcode_base_name))
         categories = json.load(open(categories_list_name))
     except FileNotFoundError:
         print("No database was found, crating blank bases")
