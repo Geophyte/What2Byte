@@ -1,9 +1,10 @@
 from pathlib import Path
 from recipe import Recipe
+import json
 
 
 storage_path = Path(__file__).parent / "../data/storage.txt"
-recipes_path = Path(__file__).parent / "../data/recipes.txt"
+recipes_path = Path(__file__).parent / "../data/recipes.json"
 codes_path = Path(__file__).parent / "../data/codes.txt"
 
 
@@ -21,31 +22,18 @@ def update_storage(storage):
         f.close()
 
 
-def get_recipe(rec):
-    id_name = rec[0].split(" ")
-    id = int(id_name[0])
-    id_name.remove(id_name[0])
-    name = " ".join(id_name)
+# Zwraca listę przepisów wczytaną z recipes_path
+def get_recipes() -> list:
+    with open(recipes_path, "r", encoding="utf-8") as recipes_file:
+        recipes_list = json.load(recipes_file)
 
-    ingredients = rec[2].split("/")
-    ingredients = {product.split(" ")[0]: int(product.split(" ")[1]) for product in ingredients}
+    # Zamień dane wczystane z recipes.json na
+    # liste klasy Recipe
+    for i, rec in enumerate(recipes_list):
+        ingredients = zip(rec["ingredients"], rec["ingredients_amount"])
+        text = "\n".join(rec["steps"])
+        recipes_list[i] = Recipe(rec["id"], rec["name"], ingredients, text)
 
-    text = rec[4]
-
-    recipe = Recipe(id, name, ingredients, text)
-    return recipe
-
-
-def get_recipes():
-    recipes = open(recipes_path, "r").read().split("\n")
-    recipes_list = []
-    rec = []
-    for line in recipes:
-        if len(rec) < 5:
-            rec.append(line)
-        else:
-            recipes_list.append(get_recipe(rec))
-            rec.clear()
     return recipes_list
 
 

@@ -1,3 +1,4 @@
+from pathlib import Path
 import json
 
 
@@ -59,8 +60,8 @@ def save() -> None:
 
 if __name__ == "__main__":
     # definition of file adress
-    barcode_base_name = "./data/barcode_base.json"
-    categories_list_name = "./data/categories_list.json"
+    barcode_base_name = Path(__file__).parent / "../data/barcode_base.json"
+    categories_list_name = Path(__file__).parent / "../data/categories_list.json"
     try:  # tries to open files if failes saves blanc dict and list to create blank database file
         product = json.load(open(barcode_base_name))
         categories = json.load(open(categories_list_name))
