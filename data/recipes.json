@@ -1,0 +1,235 @@
+[
+    {
+        "id": 0,
+        "name": "spaghetti",
+        "ingredients": ["mięso mielone", "cebula", "czosnek", "marchewka", "olej", "krojone pomidory", "koncentrat pomidorowy", "kostka rosołowa", "oregano", "ser tarty", "makaron"],
+        "ingredients_amount": [100, 50, 1, 100, 40, 200, 40, 1, 10, 50, 100],
+        "ingredients_units": ["g", "g", "s", "g", "ml", "g", "g", "s", "g", "g", "g"],
+        "steps": 
+        [
+            "Cebulę i czosnek obrać i poszatkować.", 
+            "Marchewkę umyć, obrać i pokroić w drobną kostkę.",
+            "Cebulę i czosnek chwilkę podsmażyć na oleju.",
+            "Dodać mięso mielone i marchewkę.",
+            "Wszystko razem chwilę podsmażyć, aż mięso straci kolor różowy.",
+            "Dodać pomidory z puszki (razem z sosem z puszki), koncentrat pomidorowy i kostkę rosołową.",
+            "Całość dusić pod przykryciem na niskiej mocy palnika ok. 20 minut.",
+            "Przyprawić solą, pieprzem i oregano.",
+            "Spaghetti ugotować w osolonej wodzie według przepisu na opakowaniu. Odcedzić na durszlaku. (Nie przelewać zimną wodą).",
+            "Spaghetti rozłożyć na talerzach. Polać sosem z mięsem i posypać serem"
+        ]
+    },
+    {
+        "id": 1,
+        "name": "Ślimaczki serowe z szynką",
+        "ingredients": ["ciasto francuskie", "serek topiony", "szynka"],
+        "ingredients_amount": [150, 60, 100],
+        "ingredients_units": ["g", "g", "g"],
+        "steps": 
+        [
+            "Serek rozsmarować na cieście francuskim. Następnie rozłożyć szynkę.", 
+            "Ciasto zwinąć wzdłuż dłuższego boku do połowy z obu stron jak roladę.",
+            "Ciasto pokroić na plasterki o ok. 1 cm grubości.",
+            "Gotowe ślimaczki ułożyć na blasze wyłożonej papierem do pieczenia. (Wychodzą dwie blachy).",
+            "Piec w nagrzanym piekarniku jedną blachę po drugiej ok. 30 minut, w temperaturze 180°C (grzałka góra- dół), do lekkiego zarumienienia"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Krem ziemniaczany",
+        "ingredients": ["ziemniaki", "woda", "kostka rosołowa", "cebula", "śmietana", "masło", "olej"],
+        "ingredients_amount": [3, 500, 1, 2, 100, 15, 30],
+        "ingredients_units": ["s", "ml", "s", "s", "g", "g", "ml"],
+        "steps": 
+        [
+            "Ziemniaki obrać, umyć i pokroić kostkę.",
+            "1 ziemniaka usmażyć na oleju. Odstawić na bok.",
+            "Resztę ziemniaków dodać do wody dorzucić kostkę rosołową i ugotować.",
+            "Cebulę obrać i pokroić w kostkę. Przysmażyć na maśle. Dodać do zupy.",
+            "Gdy ziemniaki się ugotują, zupę zmiksować na krem. Dodać śmietanę, solą i pieprzem.",
+            "Rozlać do talerzy i posypać usmażonymi ziemniakami."
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Makaron z truskawkami",
+        "ingredients": ["makaron", "truskawki", "cukier", "śmietana"],
+        "ingredients_amount": [150, 400, 45, 100],
+        "ingredients_units": ["g", "g", "g", "ml"],
+        "steps": 
+        [
+            "Makaron ugotować w lekko osolonej wodzie, odcedzić.",
+            "Truskawki umyć i oderwa szypułki. Pokroić i włożyć do miski.",
+            "Dodać cukier i rozgnieść.",
+            "Wymieszać ze śmietaną.",
+            "Gorący makaron wyłożyć na talerz i polać sosem truskawkowym."
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Kasza jaglana z cukinią",
+        "ingredients": ["kasza jaglana", "oliwa", "cukinia", "pomidor", "cebula", "czosnek", "bazylia", "kurkuma", "słodka papryka", "oregano"],
+        "ingredients_amount": [80, 30, 1, 200, 50, 1, 10, 5, 5, 5],
+        "ingredients_units": ["ml", "ml", "s", "g", "g", "ząbek", "g", "g", "g", "g"],
+        "steps": 
+        [
+            "Ugotować kaszę jaglaną.",
+            "Na patelni na 1 łyżce oliwy podsmażyć do zarumienienia pokrojoną w kosteczki cukinię, doprawić solą i pieprzem.",
+            "Dodać czosnek i jeszcze chwilę podsmażyć mieszając.",
+            "Dodać przyprawy oraz kaszę jaglaną. Mieszając smażyć ok. 2 minuty.",
+            "Wyłożyć na talerz, dodać pokrojone pomidory, doprawić solą, pieprzem.",
+            "Posypać posiekaną cebulą oraz bazylią.",
+            "Skropić pozostałą oliwą."
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Leczo",
+        "ingredients": ["smalec", "cebula", "kiełbasa", "czosnek", "papryka", "słodka papryka", "pomidor", "koncentrat pomidorowy"],
+        "ingredients_amount": [15, 100, 100, 1, 300, 5],
+        "ingredients_units": ["g", "g", "g", "ząbek", "g", "g", "g", "ml"],
+        "steps": 
+        [
+            "Do szerokiego garnka włożyć smalec, dodać pokrojoną w kosteczkę cebulę oraz pokrojoną na klasterki kiełbasę, smażyć ok. 7 min",
+            "Dodać starty lub rozgnieciony czosnek i smażyć jeszcze przez 3 minuty.",
+            "Dodać pokrojoną w kostkę paprykę i smażyć 3 minuty.",
+            "Doprawić solą, świeżo zmielonym pieprzem oraz słodką i ostrą papryką.",
+            "Dodać obrane i pokrojone w kostkę świeże pomidory.",
+            "Gotować przez około 15 minut pod uchyloną pokrywą, co jakiś czas zamieszać.",
+            "Dodać koncentrat pomidorowy."
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Placki ziemiaczane",
+        "ingredients": ["ziemiaki", "mąka pszenna", "cebula", "jajko", "olej"],
+        "ingredients_amount": [500, 10, 25, 1, 200],
+        "ingredients_units": ["g", "g", "g", "s", "ml"],
+        "steps": 
+        [
+            "Ziemiaki obrać i zetrzeć na tarce o małych oczkach bezpośrednio do większej i płaskiej miski.",
+            "Zostawić je w misce bez mieszania, miską delikatnie przechylić i odstawić tak na ok. 5 minut.",
+            "Sporadycznie odlewać zbierający się sok, delikatnie przytrzymując ziemniaki, nadal ich nie mieszać.",
+            "Na koniec docisnąć dłonią do miski i odlać resztę soku.",
+            "Dodać mąkę, drobno startą cebulę, jajko oraz sól.",
+            "Rozgrzać patelnię, wlać olej.",
+            "Masę ziemniaczaną wymieszać.",
+            "Nakładać porcje masy (1 pełna łyżka) na rozgrzany olej i rozprowadzać ją na dość cienki placek.",
+            "Smażyć na średnim ogniu przez ok. 2-3 minuty na złocisty kolor, przewrócić na drugą stronę i powtórzyć smażenie.",
+            "Odkładać na talerz wyłożony ręcznikami papierowymi."
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Racuchy z jabłkami",
+        "ingredients": ["jabłko", "mleko", "jajko", "mąka pszenna", "cukier waniliowy", "cukier", "soda oczyszczona", "olej"],
+        "ingredients_amount": [400, 200, 1, 150, 15, 5, 3, 200],
+        "ingredients_units": ["g", "ml", "s", "g", "g", "g", "g", "ml"],
+        "steps": 
+        [
+            "Mąkę przesiać do miski, dodać cukier waniliowy, cukier oraz sodę oczyszczoną, wymieszać.",
+            "Dodać mleko i jajko i wymieszać składniki rózgą na jednolitą masę bez grudek.",
+            "Jabłka obrać, pokroić na ćwiartki, wydrążyć, ćwiartki przekroić wzdłuż na pół a później jeszcze na poprzeczne plasterki.",
+            "Włożyć jabłka do ciasta i wymieszać.",
+            "Wykładać po około łyżce ciasta i po 3 plasterki jabłek na 1 placka na rozgrzany tłuszcz na patelni.",
+            "Smażyć przez około 1,5 minuty na złoty kolor.",
+            "Przewrócić na drugą stronę i powtórzyć smażenie."
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Puszyste placuszki",
+        "ingredients": ["jogurt naturalny", "cukier waniliowy", "jajko", "masło", "mąka", "soda oczyszczona", "proszek do pieczenia", "olej"],
+        "ingredients_amount": [350, 16, 2, 45, 225, 5, 3, 200],
+        "ingredients_units": ["g", "s", "g", "g", "g", "g", "ml"],
+        "steps": 
+        [
+            "W pierwszej misce wymieszać jogurt z cukrem waniliowym oraz jajkami.",
+            "Dodać roztopione masło.",
+            "Do drugiej miski wsypać mąkę, sodę oczyszczoną i proszek do pieczenia, wymieszać.",
+            "Przesypać do składników z pierwszej miski (nie odwrotnie) i wymieszać delikatnie rózgą tylko do połączenia składników w jednolite ciasto",
+            "Ragrzać patelnię i ją lekko natłuścić.",
+            "Nakładać po 2 łyżki ciasta na 1 placka i smażyć przez ok. 1-2 minuty aż placki będą zarumienione od spodu.",
+            "Przewrócić na drugą stronę i powtórzyć smażenie."
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Szakszuka",
+        "ingredients": ["pomidor", "masło", "czosnek", "jajko", "oregano"],
+        "ingredients_amount": [2, 5, 0.5, 2, 5],
+        "ingredients_units": ["s", "g", "ząbka", "s", "g"],
+        "steps": 
+        [
+            "Pomidory sparzyć, obrać ze skórki, pokroić na ćwiartki, wykroić szypułki, miąższ pokroić w kosteczkę.",
+            "Na niedużą patelnię włożyć masło oraz starty czosnek, chwilę podsmażyć.",
+            "Pomidory włożyć na patelnię, doprawić solą, pieprzem i przyprawami.",
+            "Wymieszać i intensywnie smażyć na większym ogniu przez około 4 minuty, już bez mieszania.",
+            "Do podsmażonych pomidorów wbić jajka, doprawić solą. Przykryć i gotować przez około 3 minuty lub do czasu aż białka jajek będą ścięte."
+        ]
+    },
+    {
+        "id": 10,
+        "name": "Pieczona owsianka",
+        "ingredients": ["płatki owsiane", "mleko", "miód", "cynamon", "jabłko", "cukier", "sok z cytryny"],
+        "ingredients_amount": [100, 400, 30, 5, 1, 15, 5],
+        "ingredients_units": ["g", "ml", "ml", "g", "s", "g", "ml"],
+        "steps": 
+        [
+            "Piekarnik nagrzać do 190 stopni C.",
+            "Płatki owsiane wsypać do niedużego naczynia żaroodpornego lub kilku mniejszych, tak aby sięgały nie więcej niż do ich połowy.",
+            "Mleko podgrzać prawie do zagotowania, dodać miód lub syrop oraz rodzynki, zalać tym płatki.",
+            "Posypać cynamonem oraz pokrojonym w kosteczkę jabłkiem. Jabłka posypać cukrem.",
+            "Wstawić do piekarnika na 20 - 25 minut. Wyjąć z piekarnika i skropić sokiem z cytryny lub pomarańczy."
+        ]
+    },
+    {
+        "id": 11,
+        "name": "Makaron z kurczakiem i szpinakiem w sosie pesto",
+        "ingredients": ["pesto", "filet z kurczaka", "makaron ", "szpinak", "oliwa", "śmietanka 30%"],
+        "ingredients_amount": [60, 200, 125, 125, 15, 125],
+        "ingredients_units": ["g", "g", "g", "g", "ml", "ml"],
+        "steps": 
+        [
+            "Kurczaka pokroić w kosteczkę, doprawić solą i pieprzem. Nastawić osoloną wodę na makaron. Ugotować go al dente.",
+            "Sprawdzić czy szpinak jest opłukany, w razie potrzeby opłukać go i osuszyć.",
+            "Rozgrzać oliwę na patelni, włożyć kurczaka i obsmażyć z każdej strony. Dodać szpinak i mieszając smażyć aż zwiędnie i odparuje (ok. 1 - 2 minuty).",
+            "Wlać śmietankę i zagotować. Gotować przez ok. 1 - 2 minuty aż sos zgęstnieje. Wówczas dodać 4 łyżki pesto i wymieszać.",
+            "Dodać odcedzony makaron, wymieszać i podgrzać przez chwilę w razie potrzeby."
+        ]
+    },
+    {
+        "id": 12,
+        "name": "Sałatka z winogronami i kurczakiem",
+        "ingredients": ["filet z kurczaka", "masło", "rukola", "sałata", "winogrona", "ser pleśniowy", "orzechy włoskie", "oliwa", "miód", "sok z cytryny"],
+        "ingredients_amount": [200, 20, 50, 50, 200, 100, 60, 45, 45, 15],
+        "ingredients_units": ["g", "g", "g", "g", "g", "g", "g", "ml", "g", "ml"],
+        "steps": 
+        [
+            "Piekarnik nagrzać do 190 stopni C.",
+            "Kurczaka umyć, osuszyć, odciąć kostki i chrząstki. Rozgrzać patelnię. Mięso doprawić solą i pieprzem i obsmażyć na maśle po 3 minuty z każdej strony.",
+            "Następnie włożyć do naczynia żaroodpornego i piec bez przykrycia przez ok. 15 minut.",
+            "Wyjąć naczynie z kurczakiem z piekarnika i wyłożyć mięso na talerz, przykryć folią i odstawić na 5 minut. Potem można już go pokroić.",
+            "2 łyżki soku z pieczeni połączyć za pomocą rózgi ze składnikami sosu: oliwą, miodem, sokiem z cytryny i zmielonym pieprzem.",
+            "W salaterkach przekładać liście rukoli i sałaty składnikami sałatki: pokrojonym kurczakiem, połówkami winogron, pokrojonym w kostkę serem pleśniowym oraz lekko zrumienionymi na patelni orzechami włoskimi.",
+            "Polać sosem. Można doprawić solą w razie potrzeby."
+        ]
+    },
+    {
+        "id": 13,
+        "name": "Pulpety drobiowe",
+        "ingredients": ["mięso z kurczaka", "marchew", "cebula", "jajko", "koperek", "masło"],
+        "ingredients_amount": [600, 150, 100, 1, 30, 30],
+        "ingredients_units": ["g", "g", "g", "s", "g", "g"],
+        "steps": 
+        [
+            "Zmielić mięso i posiekać cebulę",
+            "Dodać łyżkę koperku jajko i przyprawy",
+            "Namoczyć kajzerkę w wodzie",
+            "Wyrobić masę mięsną pod pulpeciki",
+            "Pulpety podsmażyc z obu stron na patelni",
+            "Gotuj w garnku wodę z posiekaną marchewką",
+            "Dodaj pulpety i łyzkę koperku"
+        ]
+    }
+]
