@@ -7,6 +7,9 @@ categories_list_name = Path(__file__).parent / "../data/categories_list.json"
 
 
 def add_product(code: int) -> None:
+    """
+    Adds product to barcode_base
+    """
     print("Adding new product to barcode list")
     product_category = input("Pls input product category: ").lower()
     if product_category in categories:
@@ -32,24 +35,31 @@ def add_product(code: int) -> None:
                 )
 
 
-def scan():
+def scan() -> list:
+    """
+    returns list of [category,ammount]
+    """
     code = input("Pls scan or manualy type barcode ('exit' to leave and save): ")
     if code.lower() == "exit":
         save()
+        return "exit"
     if code.isdigit():
         if code in product:
-            print(product[code])
+            return product[code]
         else:
             print("\n!!!!There is no such barcode in data base...!!!!\n")
             add_product(code)
     else:
-        print("\nThere is something wrong with given barcode... Pls try again\n")
+        return "\nThere is something wrong with given barcode... Pls try again\n"
 
 
 def scan_loop():
     a = None
-    while a != "exit":
+    while 1:
         a = scan()
+        if a == "exit":
+            save()
+            break
         print(a)
 
 
@@ -79,6 +89,5 @@ def load():
 
 
 if __name__ == "__main__":
-    load()
-    scan_loop()
-    save()
+    load()  # opens and downloads files from DB
+    scan_loop()  # includes save()
