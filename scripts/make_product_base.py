@@ -2,7 +2,14 @@ from pathlib import Path
 import json
 
 
+barcode_base_name = Path(__file__).parent / "../data/barcode_base.json"
+categories_list_name = Path(__file__).parent / "../data/categories_list.json"
+
+
 def add_product(code: int) -> None:
+    """
+    Adds product to barcode_base
+    """
     print("Adding new product to barcode list")
     product_category = input("Pls input product category: ").lower()
     if product_category in categories:
@@ -28,21 +35,32 @@ def add_product(code: int) -> None:
                 )
 
 
-def scan():
+def scan() -> list:
+    """
+    returns list of [category,ammount] of scenned product and returns list of it's [category,ammount]
+    """
+    code = input("Pls scan or manualy type barcode ('exit' to leave and save): ")
+    if code.lower() == "exit":
+        save()
+        return "exit"
+    if code.isdigit():
+        if code in product:
+            return product[code]
+        else:
+            print("\n!!!!There is no such barcode in data base...!!!!\n")
+            add_product(code)
+    else:
+        return "\nThere is something wrong with given barcode... Pls try again\n"
+
+
+def scan_loop():
+    a = None
     while 1:
-        code = input("Pls scan or manualy type barcode ('exit' to leave and save): ")
-        if code.lower() == "exit":
+        a = scan()
+        if a == "exit":
             save()
             break
-        if code.isdigit():
-            if code in product:
-                print(product[code])
-            else:
-                print("\n!!!!There is no such barcode in data base...!!!!\n")
-                add_product(code)
-        else:
-            print("\nThere is something wrong with given barcode... Pls try again\n")
-            continue
+        print(a)
 
 
 def save() -> None:
@@ -52,16 +70,14 @@ def save() -> None:
     dict_file = open(barcode_base_name, "w")
     json.dump(product, dict_file)  # dups product dict into file product_base.py
     dict_file.close()
-
     categories_file = open(categories_list_name, "w")
     json.dump(categories, categories_file)  # dups types list into file product_base.py
     categories_file.close()
 
 
-if __name__ == "__main__":
-    # definition of file adress
-    barcode_base_name = Path(__file__).parent / "../data/barcode_base.json"
-    categories_list_name = Path(__file__).parent / "../data/categories_list.json"
+def load():
+    global product
+    global categories
     try:  # tries to open files if failes saves blanc dict and list to create blank database file
         product = json.load(open(barcode_base_name))
         categories = json.load(open(categories_list_name))
@@ -70,4 +86,8 @@ if __name__ == "__main__":
         product = {}
         categories = []
         save()
-    scan()
+
+
+if __name__ == "__main__":
+    load()  # opens and downloads files from DB
+    scan_loop()  # includes save()
