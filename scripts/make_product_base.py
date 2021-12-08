@@ -2,7 +2,7 @@ from pathlib import Path
 import json
 
 
-barcode_base_name =  Path(__file__).parent / "../data/barcode_base.json"
+barcode_base_name = Path(__file__).parent / "../data/barcode_base.json"
 categories_list_name = Path(__file__).parent / "../data/categories_list.json"
 
 
@@ -46,6 +46,13 @@ def scan():
         print("\nThere is something wrong with given barcode... Pls try again\n")
 
 
+def scan_loop():
+    a = None
+    while a != "exit":
+        a = scan()
+        print(a)
+
+
 def save() -> None:
     """
     This will save new list and dict to their files
@@ -53,7 +60,6 @@ def save() -> None:
     dict_file = open(barcode_base_name, "w")
     json.dump(product, dict_file)  # dups product dict into file product_base.py
     dict_file.close()
-
     categories_file = open(categories_list_name, "w")
     json.dump(categories, categories_file)  # dups types list into file product_base.py
     categories_file.close()
@@ -62,7 +68,6 @@ def save() -> None:
 def load():
     global product
     global categories
-    # definition of file adress
     try:  # tries to open files if failes saves blanc dict and list to create blank database file
         product = json.load(open(barcode_base_name))
         categories = json.load(open(categories_list_name))
@@ -71,11 +76,9 @@ def load():
         product = {}
         categories = []
         save()
-    while 1:
-        print(scan())
 
 
 if __name__ == "__main__":
     load()
-    scanning_loop()
+    scan_loop()
     save()
