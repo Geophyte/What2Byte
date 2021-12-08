@@ -37,7 +37,7 @@ def add_product(code: int) -> None:
 
 def scan() -> list:
     """
-    returns list of [category,ammount]
+    returns list of [category,ammount] of scenned product and returns list of it's [category,ammount]
     """
     code = input("Pls scan or manualy type barcode ('exit' to leave and save): ")
     if code.lower() == "exit":
