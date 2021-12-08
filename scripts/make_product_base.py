@@ -1,6 +1,10 @@
 import json
 
 
+barcode_base_name = "./data/barcode_base.json"
+categories_list_name = "./data/categories_list.json"
+
+
 def add_product(code: int) -> None:
     print("Adding new product to barcode list")
     product_category = input("Pls input product category: ").lower()
@@ -28,20 +32,17 @@ def add_product(code: int) -> None:
 
 
 def scan():
-    while 1:
-        code = input("Pls scan or manualy type barcode ('exit' to leave and save): ")
-        if code.lower() == "exit":
-            save()
-            break
-        if code.isdigit():
-            if code in product:
-                print(product[code])
-            else:
-                print("\n!!!!There is no such barcode in data base...!!!!\n")
-                add_product(code)
+    code = input("Pls scan or manualy type barcode ('exit' to leave and save): ")
+    if code.lower() == "exit":
+        save()
+    if code.isdigit():
+        if code in product:
+            print(product[code])
         else:
-            print("\nThere is something wrong with given barcode... Pls try again\n")
-            continue
+            print("\n!!!!There is no such barcode in data base...!!!!\n")
+            add_product(code)
+    else:
+        print("\nThere is something wrong with given barcode... Pls try again\n")
 
 
 def save() -> None:
@@ -57,10 +58,10 @@ def save() -> None:
     categories_file.close()
 
 
-if __name__ == "__main__":
+def load():
+    global product
+    global categories
     # definition of file adress
-    barcode_base_name = "./data/barcode_base.json"
-    categories_list_name = "./data/categories_list.json"
     try:  # tries to open files if failes saves blanc dict and list to create blank database file
         product = json.load(open(barcode_base_name))
         categories = json.load(open(categories_list_name))
@@ -69,4 +70,11 @@ if __name__ == "__main__":
         product = {}
         categories = []
         save()
-    scan()
+    while 1:
+        print(scan())
+
+
+if __name__ == "__main__":
+    load()
+    scanning_loop()
+    save()
