@@ -1,8 +1,9 @@
+from pathlib import Path
 import json
 
 
-barcode_base_name = "./data/barcode_base.json"
-categories_list_name = "./data/categories_list.json"
+barcode_base_name =  Path(__file__).parent / "../data/barcode_base.json"
+categories_list_name = Path(__file__).parent / "../data/categories_list.json"
 
 
 def add_product(code: int) -> None:
