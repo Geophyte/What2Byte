@@ -59,7 +59,7 @@ def scan() -> list:
 def update_storage(code: str) -> None:
     category, amount = product[code]
     amount = int(amount)
-    storage[code] = storage.get(code, 0) + amount
+    storage[category] = storage.get(category, 0) + amount
 
 
 def print_dict(dict) -> str:
@@ -93,6 +93,9 @@ def save() -> None:
     categories_file = open(categories_list_name, "w")
     json.dump(categories, categories_file)  # dups types list into file product_base.py
     categories_file.close()
+    storage_file = open(storage_dict_name, "w")
+    json.dump(storage, storage_file)  # dups types list into file product_base.py
+    storage_file.close()
 
 
 def load():
