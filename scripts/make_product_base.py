@@ -62,6 +62,17 @@ def update_storage(code: str) -> None:
     storage[code] = storage.get(code, 0) + amount
 
 
+def print_dict(dict) -> str:
+    dict_str = ""
+    for key, value in dict.items():
+        dict_str += f"{key}: {value}\n"
+    return dict_str
+
+
+def print_storage() -> None:
+    print(f"Obecny stan spiżarni:\n\n{print_dict(storage)}")
+
+
 def scan_loop():
     a = None
     while 1:
