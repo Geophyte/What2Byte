@@ -1,6 +1,7 @@
 from load_save import save, load
 from categories import product_category as category
-from categories import WrongCategoryError, WrongSubcategoryError
+from categories import WrongCategoryError, WrongSubcategoryError, WrongProductError
+from categories_file import categories_dict
 
 
 def add_product(code: int) -> None:
@@ -10,9 +11,9 @@ def add_product(code: int) -> None:
     print("Dodanie nowego produktu do listy kodów kreskowych")
     while 1:
         try:
-            product[code] = [category(), input("Wprowadź ilość: ")]
-        except WrongSubcategoryError:
-            print("select proper category")
+            product[code] = [category(categories_dict), input("Wprowadź ilość: ")]
+        except (WrongSubcategoryError, WrongCategoryError, WrongProductError):
+            print("\n!!!Błąd wyboru kategori!!!\n")
             continue
         break
 
@@ -54,7 +55,7 @@ def scan() -> list:
         return "exit"
     if code.isdigit():
         if code not in product:
-            print("\n!!!!There is no such barcode in data base...!!!!\n")
+            print("\n!!!!Nie ma takiego kodu kreskowego w bazie danych...!!!!\n")
             add_product(code)
         update_storage(code)
         return product[code]
