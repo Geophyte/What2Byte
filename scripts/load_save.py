@@ -8,12 +8,7 @@ storage_dict_name = Path(__file__).parent / "../data/storage_dict.json"
 recipes_dict_name = Path(__file__).parent / "../data/recipes.json"
 
 
-
 def load():
-    global product
-    global categories
-    global storage
-    global recipes
     try:  # tries to open files if failes saves blanc dict and list to create blank database file
         product = json.load(open(barcode_base_name))
         categories = json.load(open(categories_list_name))
@@ -25,10 +20,11 @@ def load():
         categories = []
         storage = {}
         recipes = {}
-        save()
+        save(product, categories, storage, recipes)
+    return product, categories, storage, recipes
 
 
-def save() -> None:
+def save(product, categories, storage, recipes) -> None:
     """
     This will save new list and dict to their files
     """
@@ -47,6 +43,3 @@ def save() -> None:
     recipes_file = open(recipes_dict_name, "w")
     json.dump(recipes, recipes_file)  # dups types list into file product_base.py
     storage_file.close()
-
-
-def load():

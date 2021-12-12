@@ -45,7 +45,10 @@ def get_doable_recipes():
 def get_codes():
     codes = get_codes_text().split("\n")
     codes.remove(codes[-1])
-    codes = {code.split(" ")[1]: (code.split(" ")[2], int(code.split(" ")[3])) for code in codes}
+    codes = {
+        code.split(" ")[1]: (code.split(" ")[2], int(code.split(" ")[3]))
+        for code in codes
+    }
     return codes
 
 

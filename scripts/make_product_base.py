@@ -1,4 +1,5 @@
 from load_save import save, load
+from categories import product_category as category
 
 
 def add_product(code: int) -> None:
@@ -45,7 +46,6 @@ def scan() -> list:
             print("\n!!!!There is no such barcode in data base...!!!!\n")
             add_product(code)
         update_storage(code)
-        save()
         return product[code]
 
     else:
@@ -56,6 +56,7 @@ def update_storage(code: str) -> None:
     category, amount = product[code]
     amount = int(amount)
     storage[category] = storage.get(category, 0) + amount
+    save(product, categories, storage, recipes)
 
 
 def print_dict(dict) -> str:
@@ -74,11 +75,12 @@ def scan_loop():
     while 1:
         a = scan()
         if a == "exit":
-            save()
+            save(product, categories, storage, recipes)
             break
         print(a)
 
 
 if __name__ == "__main__":
+    product, categories, storage, recipes = load()
     load()  # opens and downloads files from DB
     scan_loop()  # includes save()
