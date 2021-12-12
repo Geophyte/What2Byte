@@ -11,28 +11,28 @@ def add_product(code: int) -> None:
     """
     Adds product to barcode_base
     """
-    print("Adding new product to barcode list")
-    product_category = input("Pls input product category: ").lower()
+    print("Dodanie nowego produktu do listy kodów kreskowych")
+    product_category = input("Wprowadź kategorię produktu: ").lower()
     if product_category in categories:
-        product[code] = [product_category, input("Pls input amount: ")]
+        product[code] = [product_category, input("Wprowadź ilość: ")]
     else:
-        print("There is no such product category")
-        print(f"Do you want to add {product_category} to categories list?")
+        print("Nie ma takiej kategorii produktów")
+        print(f"Czy chcesz dodać {product_category} do listy kategorii?")
         while True:  # Y/n input loop. Loops until correct anwser is given
-            temp_ans = input("Y/N: ")
+            temp_ans = input("T/N: ")
             temp_ans = temp_ans.upper()
-            if temp_ans == "Y":
+            if temp_ans == "T":
                 categories.append(product_category)
                 product[code] = [
                     product_category,
-                    input("Pls input amount: "),
+                    input("Wprowadź ilość: "),
                 ]  # To be changed
-                break
+                return product[code]
             elif temp_ans == "N":
                 break
             else:
                 print(
-                    "inproper anwser has been given. Pls pass Y or N and confirm with enter...\n"
+                    "udzielono niewłaściwej odpowiedzi. Wprowadź T lub N i potwierdź, naciskając enter... \n"
                 )
 
 
@@ -40,7 +40,9 @@ def scan() -> list:
     """
     returns list of [category,ammount] of scenned product and returns list of it's [category,ammount]
     """
-    code = input("Pls scan or manualy type barcode ('exit' to leave and save): ")
+    code = input(
+        "zeskanuj lub ręcznie wpisz kod kreskowy (wpisz 'exit', aby wyjść i zapisać): "
+    )
     if code.lower() == "exit":
         save()
         return "exit"
@@ -53,7 +55,7 @@ def scan() -> list:
         return product[code]
             
     else:
-        return "\nThere is something wrong with given barcode... Pls try again\n"
+        return "\nCoś jest nie tak z podanym kodem kreskowym... Spróbuj ponownie\n"
 
 
 def update_storage(code: str) -> None:
@@ -107,7 +109,7 @@ def load():
         categories = json.load(open(categories_list_name))
         storage = json.load(open(storage_dict_name))
     except FileNotFoundError:
-        print("No database was found, crating blank bases")
+        print("Nie znaleziono bazy danych, tworzenie pustych baz")
         product = {}
         categories = []
         storage = {}
