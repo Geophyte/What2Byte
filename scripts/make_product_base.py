@@ -26,7 +26,7 @@ def add_product(code: int) -> None:
                     product_category,
                     input("Wprowadź ilość: "),
                 ]  # To be changed
-                break
+                return product[code]
             elif temp_ans == "N":
                 break
             else:
@@ -50,7 +50,7 @@ def scan() -> list:
             return product[code]
         else:
             print("\n!!!!Nie ma takiego kodu kreskowego w bazie danych...!!!!\n")
-            add_product(code)
+            return add_product(code)
     else:
         return "\nCoś jest nie tak z podanym kodem kreskowym... Spróbuj ponownie\n"
 
