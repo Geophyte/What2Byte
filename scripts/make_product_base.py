@@ -1,5 +1,6 @@
 from load_save import save, load
 from categories import product_category as category
+from categories import WrongCategoryError, WrongSubcategoryError
 
 
 def add_product(code: int) -> None:
@@ -7,19 +8,29 @@ def add_product(code: int) -> None:
     Adds product to barcode_base
     """
     print("Dodanie nowego produktu do listy kodów kreskowych")
-    product_category = input("Wprowadź kategorię produktu: ").lower()
-    if product_category in categories:
-        product[code] = [product_category, input("Wprowadź ilość: ")]
+    while 1:
+        try:
+            product[code] = [category(), input("Wprowadź ilość: ")]
+        except WrongSubcategoryError:
+            print("select proper category")
+            continue
+        break
+
+
+def add_category(code):
+    selected_category = input("Wprowadź kategorię produktu: ").lower()
+    if selected_category in categories:
+        product[code] = [selected_category, input("Wprowadź ilość: ")]
     else:
         print("Nie ma takiej kategorii produktów")
-        print(f"Czy chcesz dodać {product_category} do listy kategorii?")
+        print(f"Czy chcesz dodać {selected_category} do listy kategorii?")
         while True:  # Y/n input loop. Loops until correct anwser is given
             temp_ans = input("T/N: ")
             temp_ans = temp_ans.upper()
             if temp_ans == "T":
-                categories.append(product_category)
+                categories.append(selected_category)
                 product[code] = [
-                    product_category,
+                    selected_category,
                     input("Wprowadź ilość: "),
                 ]  # To be changed
                 return product[code]
