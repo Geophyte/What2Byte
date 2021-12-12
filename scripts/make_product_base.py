@@ -31,7 +31,7 @@ def add_product(code: int) -> None:
                 break
             else:
                 print(
-                    "udzielono niewłaściwej odpowiedzi. Wprowadź Y lub N i potwierdź, naciskając enter... \n"
+                    "udzielono niewłaściwej odpowiedzi. Wprowadź T lub N i potwierdź, naciskając enter... \n"
                 )
 
 
