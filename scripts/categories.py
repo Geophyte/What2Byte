@@ -88,6 +88,3 @@ def product_category(categories: dict) -> str:
                 raise WrongProductError
             else:
                 return choice3
-
-
-print(product_category(categories))
