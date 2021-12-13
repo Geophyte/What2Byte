@@ -25,7 +25,7 @@ def add_recipe(name: str, ingredients: list, steps: list, recipes_list: list):
     return recipes_list.append(dict)
 
 
-if __name__ == "__name__":
+if __name__ == "__main__":
     add_recipe(
         "spagethi",
         (("masło", 50), ("makaron", 500)),
