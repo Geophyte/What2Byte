@@ -48,3 +48,10 @@ def product_category(categories: dict) -> str:
                 raise WrongProductError
             else:
                 return products[choice3]
+
+if __name__ == "__main__":
+    while 1:
+        try:
+            print(product_category(categories))
+        except Exception:
+            pass

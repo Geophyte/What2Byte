@@ -51,7 +51,7 @@ def scan() -> list:
         "zeskanuj lub ręcznie wpisz kod kreskowy (wpisz 'exit', aby wyjść i zapisać): "
     )
     if code.lower() == "exit":
-        save()
+        save(product, categories, storage, recipes)
         return "exit"
     if code.isdigit():
         if code not in product:
