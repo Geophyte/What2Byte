@@ -51,7 +51,6 @@ def scan() -> list:
         "zeskanuj lub ręcznie wpisz kod kreskowy (wpisz 'exit', aby wyjść i zapisać): "
     )
     if code.lower() == "exit":
-        save(product, categories, storage, recipes)
         return "exit"
     if code.isdigit():
         if code not in product:
@@ -68,7 +67,6 @@ def update_storage(code: str) -> None:
     category, amount = product[code]
     amount = int(amount)
     storage[category] = storage.get(category, 0) + amount
-    save(product, categories, storage, recipes)
 
 
 def print_dict(dict) -> str:
