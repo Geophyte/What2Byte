@@ -4,15 +4,12 @@ from categories_file import categories_dict as categories
 class WrongCategoryError(Exception):
     def __init__(self):
         super().__init__(
-            "\nWprowadzona kategoria nie istnieje. Wpisz kategorię ponownie.\n"
-        )
+            "\nPodany numer nie pasuje do żadnej kategorii. Wybierz kategorię ponownie.\n")
 
 
 class WrongSubcategoryError(Exception):
     def __init__(self):
-        super().__init__(
-            "\nWprowadzona podkategoria nie istnieje. Wpisz podkategorię ponownie.\n"
-        )
+        super().__init__("\nPodany numer nie pasuje do żadnej podkategorii. Wybierz podkategorię ponownie.\n")
 
 
 class WrongProductError(Exception):
@@ -26,34 +23,28 @@ def product_category(categories: dict) -> str:
     """Zwraca nazwę (pod)kategorii produktu wybranej ze słownika"""
 
     print("Wybierz kategorię: ")
-    for category in categories:
-        print(category)
-    choice1 = input("\n")
-    if choice1.lower() not in categories.keys():
+    for count, category in enumerate(categories):
+        print(count+1, category)
+    id_list = list(categories.keys())
+    choice1 = int(input('\nWprowadź numer kategorii: '))-1
+    if choice1 < 0 or choice1 > len(id_list)-1:
         raise WrongCategoryError
-    if choice1.lower() in categories.keys():
-        subcategories = categories[choice1.lower()]
+    else:
+        subcategories = categories[id_list[choice1]]
         print("\nWybierz podkategorię: ")
-        for subcategory in subcategories:
-            print(subcategory)
-        choice2 = input("\n")
-        if choice2.lower() not in subcategories:
+        for count, subcategory in enumerate(subcategories):
+            print(count+1, subcategory)
+        id_list2 = list(subcategories.keys())
+        choice2 = int(input('\nWprowadź numer podkategorii: '))-1
+        if choice2 < 0 or choice2 > len(id_list2)-1:
             raise WrongSubcategoryError
         else:
-            products = categories[choice1.lower()][choice2.lower()]
+            products = categories[id_list[choice1]][id_list2[choice2]]
             print("\nWybierz produkt: ")
-            for product in products:
-                print(product)
-            choice3 = input("\n")
-            if choice3.lower() not in products:
+            for count, product in enumerate(products):
+                print(count+1, product)
+            choice3 = int(input('\nWprowadź numer produktu:'))-1
+            if choice3 < 0 or choice3 > len(products)-1:
                 raise WrongProductError
             else:
-                return choice3
-
-
-if __name__ == "__main__":
-    while 1:
-        try:
-            print(product_category(categories))
-        except Exception:
-            pass
+                return products[choice3]
