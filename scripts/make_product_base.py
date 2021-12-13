@@ -4,7 +4,11 @@ import json
 
 barcode_base_name = Path(__file__).parent / "../data/barcode_base.json"
 categories_list_name = Path(__file__).parent / "../data/categories_list.json"
-storage_dict_name = Path(__file__).parent / "../data/storage_dict.json"
+storage_dict_name = Path(__file__).parent / "../data/storage_dict.json"         # Czemu nazywać te zmiennie [nazwa pliku]_name skoro to ścieżki do tych plików?
+
+# Ten moduł ma służyć tworzeniu bazy danych produktów
+# część z tych funckcji nie powinna tu być np. funckje
+# do zarządzania magazynem
 
 
 def add_product(code: int) -> None:
@@ -53,7 +57,7 @@ def scan() -> list:
         update_storage(code)
         save()
         return product[code]
-            
+
     else:
         return "\nCoś jest nie tak z podanym kodem kreskowym... Spróbuj ponownie\n"
 
