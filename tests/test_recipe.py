@@ -1,7 +1,4 @@
-from recipe import Recipe
-
-
-# Ten plik i inne testy powinny się znaleźć w folderze tests
+from scripts.recipe import Recipe
 
 
 def test_is_doable():
