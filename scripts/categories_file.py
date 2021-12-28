@@ -162,4 +162,5 @@ categories_dict = {
         "płynne": ["olej", "olej rzepakowy", "olej słonecznikowy", "oliwa"],
         "twarde": ["masło", "margaryna", "smalec"],
     },
+    "inne": None
 }
