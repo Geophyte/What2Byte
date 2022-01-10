@@ -33,3 +33,11 @@ def save(data: Any, f_path: file_path) -> None:
     # zapisuje podane dane do pliku .json
     with open(f_path.value, encoding="utf-8", mode="w") as file:
         json.dump(data, file, indent=4)
+
+
+if __name__ == "__main__":
+    # wczytywanie pliku:
+    data = load(file_path.products)
+
+    # zapisywanie pliku:
+    save(data, file_path.products)
