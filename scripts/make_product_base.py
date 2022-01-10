@@ -48,10 +48,12 @@ def scan() -> list:
     returns list of [category,ammount] of scenned product and returns list of it's [category,ammount]
     """
     code = input(
-        "zeskanuj lub ręcznie wpisz kod kreskowy (wpisz 'exit', aby wyjść i zapisać): "
+        "zeskanuj lub ręcznie wpisz kod kreskowy (wpisz 'brak', jeżeli nie ma kodu lub 'exit', aby wyjść i zapisać): "
     )
     if code.lower() == "exit":
         return "exit"
+    elif code.lower() == "brak":
+        update_storage(None)
     if code.isdigit():
         if code not in product:
             print("\n!!!!Nie ma takiego kodu kreskowego w bazie danych...!!!!\n")
@@ -62,11 +64,28 @@ def scan() -> list:
     else:
         return "\nCoś jest nie tak z podanym kodem kreskowym... Spróbuj ponownie\n"
 
+    else:
+        return "\nCoś jest nie tak z podanym kodem kreskowym... Spróbuj ponownie\n"
+
 
 def update_storage(code: str) -> None:
-    category, amount = product[code]
+    """
+    Adds product to storage_dict
+    """
+    if not code:
+        "Product without barecode"
+        while 1:
+            try:
+                cat = category(categories_dict)
+                amount = input("Wprowadź ilość: ")
+            except (WrongSubcategoryError, WrongCategoryError, WrongProductError):
+                print("\n!!!Błąd wyboru kategori!!!\n")
+                continue
+    else:
+        "Product with barecode"
+        cat, amount = product[code]
     amount = int(amount)
-    storage[category] = storage.get(category, 0) + amount
+    storage[cat] = storage.get(cat, 0) + amount
 
 
 def print_dict(dict) -> str:
