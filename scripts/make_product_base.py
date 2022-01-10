@@ -1,4 +1,4 @@
-from load_save import save, load
+from load_save import save, load, file_path
 from categories import product_category as category
 from categories import WrongCategoryError, WrongSubcategoryError, WrongProductError
 from categories_file import categories_dict
@@ -85,12 +85,18 @@ def scan_loop():
     while 1:
         a = scan()
         if a == "exit":
-            save(product, categories, storage, recipes)
+            save(product, file_path.products)
+            save(storage, file_path.storage)
+            save(recipes, file_path.recipes)
+            save(categories, file_path.categories)
             break
         print(a)
 
 
 if __name__ == "__main__":
-    product, categories, storage, recipes = load()
-    load()  # opens and downloads files from DB
+    product = load(file_path.products)
+    storage = load(file_path.storage)
+    recipes = load(file_path.recipes)
+    categories = load(file_path.categories)
+
     scan_loop()  # includes save()

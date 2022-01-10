@@ -1,11 +1,5 @@
-from pathlib import Path
+from load_save import load, file_path
 from recipe import Recipe
-import json
-
-
-storage_path = Path(__file__).parent / "../data/storage_dict.json"
-recipes_path = Path(__file__).parent / "../data/recipes.json"
-codes_path = Path(__file__).parent / "../data/codes.txt"
 
 
 # def get_storage():
@@ -24,8 +18,7 @@ codes_path = Path(__file__).parent / "../data/codes.txt"
 
 # Zwraca listę przepisów wczytaną z recipes_path
 def get_recipes() -> list:
-    with open(recipes_path, "r", encoding="utf-8") as recipes_file:
-        recipes_list = json.load(recipes_file)
+    recipes_list = load(file_path.recipes)
 
     # Zamień dane wczystane z recipes.json na
     # liste klasy Recipe
@@ -89,7 +82,7 @@ def get_doable_recipes(storage):
 #     return category, amount
 
 if __name__ == "__main__":
-    storage = json.load(open(storage_path, "r", encoding="utf-8"))
+    storage = load(file_path.storage)
 
     for recipe in get_recipes():
         print(recipe)
