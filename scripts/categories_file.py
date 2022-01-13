@@ -3,19 +3,25 @@ categories_dict = {
         "dżemy i marmolady": [
             "dżem truskawkowy",
             "dżem brzoskwiniowy",
+            "dżem owoce leśne",
+            "dżem wiśniowy",
+            "dżem owocowy",
             "marmolada wieloowocowa",
             "konfitura malinowa",
+            "konfitura wiśniowa",
+            "konfitura owoce leśne",
+            "konfitura owocowa"
         ],
-        "kremy": ["nutella", "masło orzechowe"],
-        "pasty": ["pasta warzywna", "hummus", "pasta jajeczna"],
+        "kremy": ["nutella", "masło orzechowe", "krem czekoladowy"],
+        "pasty": ["pasta warzywna", "hummus", "pasta jajeczna", "pasta rybna"],
     },
     "nabiał": {
         "jaja i drożdże": ["jajko", "drożdże"],
         "jogurty i serki": [
             "serek homogenizowany",
-            "serek waniliowy",
             "serek naturalny",
             "jogurt naturalny",
+            "jogurt z owocami",
             "skyr",
         ],
         "mleko i kefir": ["mleko", "zsiadłe mleko", "kefir", "maślanka"],
@@ -31,19 +37,23 @@ categories_dict = {
         "śmietany": ["śmietana", "śmietanka 30%"],
     },
     "napoje": {
-        "alkohole": ["rum", "wódka", "whiskey"],
-        "napoje gazowane": ["cola", "fanta", "sprite"],
+        "alkohole": ["rum", "wódka", "whiskey", "wino białe", "wino czerwone", "piwo"],
+        "napoje gazowane i ice tea": ["cola", "fanta", "sprite", "ice tea", "tonik"],
         "soki i nektary": [
             "sok pomarańczaowy",
             "sok jabłkowy",
+            "sok ananasowy",
+            "sok wieloowocowy",
+            "sok multiwitamina",
             "nektar z czarnej porzeczki",
+            "napój owocowy"
         ],
         "soki wyciskane": ["sok z cytryny", "sok z limonki", "sok z pomarańczy"],
-        "syropy": ["syrop malinowy", "syrop truskawkowy"],
-        "wody": ["woda", "woda gazowana", "woda lekko gazowana"],
+        "syropy": ["syrop malinowy", "syrop truskawkowy", "syrop imbirowy"],
+        "wody": ["woda", "woda gazowana", "woda lekko gazowana", "woda smakowa"],
     },
     "owoce, warzywa, orzechy i grzyby": {
-        "owoce": ["jabłko", "gruszka", "malina", "truskawki", "winogrona", "limonka"],
+        "owoce": ["jabłko", "gruszka", "malina", "truskawki", "winogrona", "limonka", "kiwi", "pomarańcza", "cytryna", "kaki", "mandarynka"],
         "warzywa": [
             "cebula",
             "czosnek",
@@ -57,11 +67,11 @@ categories_dict = {
             "sałata",
             "ziemniaki",
         ],
-        "orzechy": ["orzech wloski", "orzech laskowy"],
-        "grzyby": ["kurka", "pieczarka"],
+        "orzechy": ["orzech wloski", "orzech laskowy", "orzech nerkowca", "orzech ziemny", "pistacja"],
+        "grzyby": ["kurka", "pieczarka", "grzyby mun", "prawdziwek"],
     },
     "pieczywo": {
-        "bułki": ["kajzerka", "bułka z ziarnami", "bagietka"],
+        "bułki": ["kajzerka", "bułka z ziarnami", "bagietka", "bułka"],
         "chleby": ["chleb pszenny", "chleb tostowy", "chleb razowy", "chleb żytni"],
         "tortille": ["tortilla pszenna", "tortilla pełnoziarnista", "lawasz"],
         "zamienniki pieczywa": ["wafle ryżowe", "chlebki pełnoziarniste"],
@@ -89,14 +99,19 @@ categories_dict = {
             "filet z kurczaka",
             "mięso mielone",
             "mięso z kurczaka",
-            "kiełbasa",
         ],
         "wędliny i mięsa w plastrach": [
             "szynka",
             "polędwica",
             "schab",
             "kiełbasa żywiecka",
+            "salami"
         ],
+        "kabanosy i kiełbasy": [
+            "kabanosy drobiowe",
+            "kabanosy wieprzowe",
+            "kiełbasa"
+        ]
     },
     "przyprawy i dodatki w proszku": {
         "przyprawy": [
@@ -120,11 +135,10 @@ categories_dict = {
         "ketchup, majonez i inne": [
             "ketchup",
             "majonez",
-            "musztarda sarepska",
-            "musztarda dijon",
+            "musztarda",
             "chrzan",
         ],
-        "sosy": ["sos sojowy", "sos słodko-kwaśny"],
+        "sosy": ["sos sojowy", "sos słodko-kwaśny", "sos czosnkowy"],
     },
     "spiżarnia": {
         "do słodzenia": ["cukier", "cukier waniliowy", "miód", "ksylitol"],
@@ -162,4 +176,5 @@ categories_dict = {
         "płynne": ["olej", "olej rzepakowy", "olej słonecznikowy", "oliwa"],
         "twarde": ["masło", "margaryna", "smalec"],
     },
+    "inne": None
 }
