@@ -64,9 +64,6 @@ def scan() -> list:
     else:
         return "\nCoś jest nie tak z podanym kodem kreskowym... Spróbuj ponownie\n"
 
-    else:
-        return "\nCoś jest nie tak z podanym kodem kreskowym... Spróbuj ponownie\n"
-
 
 def update_storage(code: str) -> None:
     """

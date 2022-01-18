@@ -1,5 +1,6 @@
-Subject:What2Byte: Twoja lista zakupow na dzien: {current_date}
-Data: {current_date}
+Subject:What2Byte, Lista zakupow, {current_date}
+
+Twoja lista zakupow wygenerowana: {current_date}
 
 Lista zakupow:
 {missing_product_list}
