@@ -1,0 +1,9 @@
+Subject:What2Byte: Twoja lista zakupow na dzien: {current_date}
+Data: {current_date}
+
+Lista zakupow:
+{missing_product_list}
+
+
+Dziekujemy za korzystanie z What2Byte
+Milego dnia i udanych zakupow

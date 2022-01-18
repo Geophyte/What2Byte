@@ -14,6 +14,7 @@ class file_path(Enum):
     categories = _get_abs_path("../data/categories_list.json")
     storage = _get_abs_path("../data/storage_dict.json")
     recipes = _get_abs_path("../data/recipes.json")
+    shoping_list = _get_abs_path("../data/shoping_list.txt")
 
 
 def load(f_path: file_path) -> Any:
