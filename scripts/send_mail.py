@@ -14,9 +14,10 @@ def get_pass():
     return "Pzsp1W2B"
 
 
-def get_email() -> str:
-    mail = input("Proszę podać adess email: ")
-    return mail
+def get_email(email=None) -> str:
+    if email is None:
+        return input("Proszę podać adess email: ")
+    return email
 
 
 def login_loop(server):
