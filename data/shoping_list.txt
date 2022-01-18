@@ -1,0 +1,12 @@
+Subject:What2Byte, Lista zakupow, {current_date}
+
+Twoja lista zakupow wygenerowana: {current_date}
+
+Lista zakupow:
+{missing_product_list}
+
+
+Dziekujemy za korzystanie z What2Byte
+Milego dnia i udanych zakupow
+
+Wiadomosc wygenerowana automatycznie prosimy nie odpowiadac... UwU
