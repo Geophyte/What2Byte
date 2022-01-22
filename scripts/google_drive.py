@@ -1,5 +1,6 @@
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
+import os
 
 gauth = GoogleAuth()           
 drive = GoogleDrive(gauth)
@@ -64,3 +65,11 @@ def get_folder_id():
     """
     f = open("data/folder_id.txt", "r")
     return f.read()
+
+
+def files_in_data():
+    """
+    zwraca liste plikow w data
+    do uzycia w upload_files
+    """
+    return os.listdir("data")
