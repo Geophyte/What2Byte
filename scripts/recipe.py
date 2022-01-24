@@ -35,6 +35,8 @@ class Recipe:
     def __str__(self) -> str:
         return f"{self.name()}\n{self.ingredients()}"
 
+    # Sprawdza czy można przygotować przepis ze składników w 'storage'
+    # Zwraca True jeśli to możliwe
     def is_doable(self, storage: dict) -> bool:
         for ingredient in self.ingredients().keys():
             if ingredient not in storage.keys():
@@ -43,6 +45,8 @@ class Recipe:
                 return False
         return True
 
+    # Odejmuje składniki z 'storage' wykorzystane do przygotowania przepisu
+    # Zwraca 'storage' po modyfikacji
     def subtract_ingredients(self, storage: dict) -> dict:
         if not self.is_doable(storage):
             return storage
@@ -53,6 +57,8 @@ class Recipe:
                 del storage[ingredient]
         return storage
 
+    # Sprawdza jakich składników brakuje do przygotowania przepisów
+    # Zwraca słownik gdzie nazwy są kluczami, a brakująca ilość wartością
     def check(self, storage):
         lacking_ingredients = {}
         for ingred, amount in self._ingredients.items():
