@@ -1,7 +1,8 @@
-import smtplib, ssl
+import smtplib
+import ssl
 from datetime import date
-import getpass
 from load_save import file_path
+import shopping_list
 
 port = 587  # For starttls
 smtp_server = "smtp.gmail.com"
@@ -39,19 +40,19 @@ def send_list(mail):
         )
 
 
-def fill_items(missing_items: list):
-    if missing_items is None:
+def fill_items():
+    if shopping_list.to_str() == "":
         return "placeholder"
-    return missing_items
+    return shopping_list.to_str()
 
 
-def make_shoping_list_text(shoping_list_file: file_path, items_list=None):
+def make_shoping_list_text(shoping_list_file: file_path):
     msg = ""
     with open(shoping_list_file.value, "r") as shoping_list:
         msg = msg.join(_ for _ in shoping_list.readlines())
     msg = msg.format(
         current_date=get_date(),
-        missing_product_list=fill_items(items_list),
+        missing_product_list=fill_items(),
     )
     return msg
 
@@ -61,6 +62,14 @@ def get_date() -> str:
 
 
 if __name__ == "__main__":
+    ingredients = {
+        'a': 100,
+        'c': 400,
+        'b': 200,
+        'cc': 500
+    }
+    shopping_list.add_items(ingredients)
+
     print(get_date())
     print(make_shoping_list_text(file_name))
     send_list(get_email())
