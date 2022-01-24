@@ -33,7 +33,15 @@ class Recipe:
         return self._text
 
     def __str__(self) -> str:
-        return f"{self.name()}\n{self.ingredients()}"
+        text = self.name() + "\n\n"
+        text += "Składniki:\n"
+
+        for name in self._ingredients:
+            text += f"{name}: {self.ingredients()[name]}\n"
+
+        text += f"\nKroki:\n{self.text()}"
+
+        return text
 
     # Sprawdza czy można przygotować przepis ze składników w 'storage'
     # Zwraca True jeśli to możliwe
@@ -65,3 +73,13 @@ class Recipe:
             if amount > storage.get(ingred, 0):
                 lacking_ingredients[ingred] = amount - storage.get(ingred, 0)
         return lacking_ingredients
+
+
+if __name__ == "__main__":
+    ingredients = {
+        "a": 20,
+        "b": 30,
+        "c": 40
+    }
+    text = "abcdef\ndabcdef\ndffss\nndf"
+    print(Recipe(0, "a", ingredients, text))
