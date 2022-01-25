@@ -1,3 +1,6 @@
+from tkinter.tix import Tree
+
+from numpy import true_divide
 from load_save import save, load, file_path
 from categories import product_category as category
 from categories import WrongCategoryError, WrongSubcategoryError, WrongProductError
@@ -60,9 +63,28 @@ def scan() -> list:
             add_product(code)
         update_storage(code)
         return product[code]
-
     else:
         return "\nCoś jest nie tak z podanym kodem kreskowym... Spróbuj ponownie\n"
+
+
+def bool_scan(code) -> bool:
+    """
+    returns bool if something is in code base
+    """
+    if code not in product:
+        return True
+    else:
+        return False
+
+
+def get_product(code):
+    """
+    returns product from its code
+    """
+    try:
+        return product[code]
+    except KeyError:
+        return None
 
 
 def update_storage(code: str) -> None:
