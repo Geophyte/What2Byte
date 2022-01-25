@@ -43,6 +43,13 @@ class Recipe:
 
         return text
 
+    # Zwraca listę składników jako string
+    def ingredients_str(self) -> str:
+        text = str()
+        for name in self._ingredients:
+            text += f"{name}: {self._ingredients[name]}\n"
+        return text
+
     # Sprawdza czy można przygotować przepis ze składników w 'storage'
     # Zwraca True jeśli to możliwe
     def is_doable(self, storage: dict) -> bool:
@@ -82,4 +89,6 @@ if __name__ == "__main__":
         "c": 40
     }
     text = "abcdef\ndabcdef\ndffss\nndf"
-    print(Recipe(0, "a", ingredients, text))
+    recipe = Recipe(0, "a", ingredients, text)
+    print(recipe)
+    print(recipe.ingredients_str())
