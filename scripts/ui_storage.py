@@ -28,10 +28,10 @@ class Ui_StorageWindow(object):
 
         self.verticalLayout.addWidget(self.label_2)
 
-        self.storage_list = QListView(self.centralwidget)
-        self.storage_list.setObjectName(u"storage_list")
+        self.storage = QListWidget(self.centralwidget)
+        self.storage.setObjectName(u"storage")
 
-        self.verticalLayout.addWidget(self.storage_list)
+        self.verticalLayout.addWidget(self.storage)
 
         self.close_button = QPushButton(self.centralwidget)
         self.close_button.setObjectName(u"close_button")
@@ -58,5 +58,4 @@ class Ui_StorageWindow(object):
         self.label_2.setText(QCoreApplication.translate("StorageWindow", u"<html><head/><body><p><span style=\" font-size:24pt;\">SPI\u017bARNIA</span></p></body></html>", None))
         self.close_button.setText(QCoreApplication.translate("StorageWindow", u"ZAMKNIJ", None))
     # retranslateUi
-
 

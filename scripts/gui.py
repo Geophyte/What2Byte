@@ -1,4 +1,3 @@
-
 from PySide2.QtWidgets import QApplication
 from PySide2.QtWidgets import QMainWindow, QDialog, QListWidgetItem
 import sys
@@ -182,7 +181,11 @@ class StorageWindow(QMainWindow):
         self._set_text()
 
     def _set_text(self):
-        pass
+        storage = get_storage()
+        for product, amount in list(storage.items()):
+            descrip = f"{product}: {amount}"
+            item = QListWidgetItem(descrip)
+            self.ui.storage.addItem(item)
 
 
 class RecipeAllWindow(QMainWindow):
