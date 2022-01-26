@@ -1,118 +1,74 @@
 from load_save import save, load, file_path
-from categories import product_category as category
-from categories import WrongCategoryError, WrongSubcategoryError, WrongProductError
-from categories_file import categories_dict
+from recipe import Recipe
 
 
-def add_product(code: int) -> None:
+def bool_scan(code) -> bool:
     """
-    Adds product to barcode_base
+    returns bool if something is in code base
     """
-    print("Dodanie nowego produktu do listy kodów kreskowych")
-    while 1:
-        try:
-            product[code] = [category(categories_dict), input("Wprowadź ilość: ")]
-        except (WrongSubcategoryError, WrongCategoryError, WrongProductError):
-            print("\n!!!Błąd wyboru kategori!!!\n")
-            continue
-        break
-
-
-def add_category(code):
-    selected_category = input("Wprowadź kategorię produktu: ").lower()
-    if selected_category in categories:
-        product[code] = [selected_category, input("Wprowadź ilość: ")]
+    if code not in product:
+        return False
     else:
-        print("Nie ma takiej kategorii produktów")
-        print(f"Czy chcesz dodać {selected_category} do listy kategorii?")
-        while True:  # Y/n input loop. Loops until correct anwser is given
-            temp_ans = input("T/N: ")
-            temp_ans = temp_ans.upper()
-            if temp_ans == "T":
-                categories.append(selected_category)
-                product[code] = [
-                    selected_category,
-                    input("Wprowadź ilość: "),
-                ]  # To be changed
-                return product[code]
-            elif temp_ans == "N":
-                break
-            else:
-                print(
-                    "udzielono niewłaściwej odpowiedzi. Wprowadź T lub N i potwierdź, naciskając enter... \n"
-                )
+        return True
 
 
-def scan() -> list:
+def get_product(code):
     """
-    returns list of [category,ammount] of scenned product and returns list of it's [category,ammount]
+    returns product from its code
     """
-    code = input(
-        "zeskanuj lub ręcznie wpisz kod kreskowy (wpisz 'brak', jeżeli nie ma kodu lub 'exit', aby wyjść i zapisać): "
-    )
-    if code.lower() == "exit":
-        return "exit"
-    elif code.lower() == "brak":
-        update_storage(None)
-    if code.isdigit():
-        if code not in product:
-            print("\n!!!!Nie ma takiego kodu kreskowego w bazie danych...!!!!\n")
-            add_product(code)
-        update_storage(code)
+    try:
         return product[code]
+    except KeyError:
+        return None
 
-    else:
-        return "\nCoś jest nie tak z podanym kodem kreskowym... Spróbuj ponownie\n"
 
-
-def update_storage(code: str) -> None:
+def add_to_storage(category, amount):
     """
-    Adds product to storage_dict
+    przyjmuje kategorie i ilosc
+    pobiera, updatuje i zapisuje storage
     """
-    if not code:
-        "Product without barecode"
-        while 1:
-            try:
-                cat = category(categories_dict)
-                amount = input("Wprowadź ilość: ")
-            except (WrongSubcategoryError, WrongCategoryError, WrongProductError):
-                print("\n!!!Błąd wyboru kategori!!!\n")
-                continue
-    else:
-        "Product with barecode"
-        cat, amount = product[code]
-    amount = int(amount)
-    storage[cat] = storage.get(cat, 0) + amount
+    storage = load(file_path.storage) # loaduje storage
+    storage[category] = storage.get(category, 0) + amount # updatuje storage
+    save(storage, file_path.storage) # savuje storage
 
 
-def print_dict(dict) -> str:
-    dict_str = ""
-    for key, value in dict.items():
-        dict_str += f"{key}: {value}\n"
-    return dict_str
+def subtract_from_storage(category, amount):
+    add_to_storage(category, -amount)
 
 
-def print_storage() -> None:
-    print(f"Obecny stan spiżarni:\n\n{print_dict(storage)}")
+def sub_storage(recipe):
+    storage = recipe.subtract_ingredients(get_storage())
+    save(storage, file_path.storage)
 
 
-def scan_loop():
-    a = None
-    while 1:
-        a = scan()
-        if a == "exit":
-            save(product, file_path.products)
-            save(storage, file_path.storage)
-            save(recipes, file_path.recipes)
-            save(categories, file_path.categories)
-            break
-        print(a)
+def get_storage():
+    return load(file_path.storage)
 
 
-if __name__ == "__main__":
-    product = load(file_path.products)
+# Zwraca listę przepisów które można wykonać ze składników w magazynie
+def get_doable_recipes():
     storage = load(file_path.storage)
-    recipes = load(file_path.recipes)
-    categories = load(file_path.categories)
+    result = list()
+    for recipe in get_recipes():
+        if recipe.is_doable(storage):
+            result.append(recipe)
+    return result
 
-    scan_loop()  # includes save()
+
+product = load(file_path.products)
+# storage = load(file_path.storage)
+# recipes = load(file_path.recipes)
+
+# s
+
+def get_recipes() -> list:
+    recipes_list = load(file_path.recipes)
+
+    # Zamień dane wczystane z recipes.json na
+    # liste klasy Recipe
+    for i, rec in enumerate(recipes_list):
+        ingredients = zip(rec["ingredients"], rec["ingredients_amount"])
+        text = "\n".join(rec["steps"])
+        recipes_list[i] = Recipe(rec["id"], rec["name"], dict(ingredients), text)
+
+    return recipes_list
