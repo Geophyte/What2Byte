@@ -13,6 +13,8 @@ import categoriesss
 from categories_file import categories_dict
 from make_product_base import bool_scan, get_product, add_to_storage, get_recipes, get_doable_recipes, get_storage, sub_storage, subtract_from_storage
 from send_mail import send_list
+from load_save import load, file_path
+import shopping_list
 
 
 class MainGui(QMainWindow):
@@ -254,6 +256,10 @@ class RecipeAllWindow(QMainWindow):
         "Pobranie mail"
         mail = self.ui.mail_adress.text()
         "Wysłanie mail"
+        shopping_list.clear()
+        storage = load(file_path.storage)
+        missing = self.recipe.check(storage)
+        shopping_list.add_items(missing)
         send_list(mail)
         self.close()
 

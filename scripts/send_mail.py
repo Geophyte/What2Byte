@@ -42,7 +42,7 @@ def send_list(mail):
 
 def fill_items():
     if shopping_list.to_str() == "":
-        return "placeholder"
+        return "Niczego nie brakuje"
     return shopping_list.to_str()
 
 
