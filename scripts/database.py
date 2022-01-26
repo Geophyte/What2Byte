@@ -1,11 +1,9 @@
 from load_save import load, file_path
 from recipe import Recipe
-import json
 
 
 def get_storage():
-    with open("/home/polamarysia/What2bite/data/storage_dict.json", "r") as file_handle:
-        return json.load(file_handle)
+    return load(file_path.storage)
 
 
 # Zwraca listę przepisów wczytaną z recipes_path
