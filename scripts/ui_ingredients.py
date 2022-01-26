@@ -61,4 +61,3 @@ class Ui_DoneDialog(object):
         self.close_Button.setText(QCoreApplication.translate("DoneDialog", u"ZAMKNIJ", None))
     # retranslateUi
 
-

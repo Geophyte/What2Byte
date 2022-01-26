@@ -62,4 +62,3 @@ class Ui_Dialog(object):
         self.ok_button.setText(QCoreApplication.translate("Dialog", u"OK", None))
     # retranslateUi
 
-

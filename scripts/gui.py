@@ -11,8 +11,8 @@ from ui_storage import Ui_StorageWindow
 from ui_ingredients import Ui_DoneDialog
 import categoriesss
 from categories_file import categories_dict
-from database import get_recipes, get_doable_recipes, get_storage
-from make_product_base import bool_scan, get_product
+from make_product_base import bool_scan, get_product, add_to_storage, get_recipes, get_doable_recipes, get_storage, sub_storage, subtract_from_storage
+from send_mail import send_list
 
 
 class MainGui(QMainWindow):
@@ -54,9 +54,11 @@ class ScanWindow(QMainWindow):
         self.ui.setupUi(self)
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.corfirm_button1.clicked.connect(self._corfirm1)
+        self.ui.sub_button.clicked.connect(self._sub)
         self.ui.close_button.clicked.connect(self.close)
         self.ui.corfirm_button2.clicked.connect(self._corfirm2)
         self.ui.category_0.itemClicked.connect(self._cat_1)
+        self.ui.sub_button_2.clicked.connect(self._sub2)
         self.product = None
         self.code = None
         self.amount = None
@@ -78,6 +80,11 @@ class ScanWindow(QMainWindow):
             amount = product_list[1]
             "Wyświetlenie okna dialogowego"
             self._add_product(category, amount)
+
+    def _sub(self):
+        "Ustawienie pustego tekstu"
+        self.ui.code.setText("")
+        self._lack_code()
 
     def _lack_code(self):
         "Wybór pierwszej kategorii"
@@ -101,6 +108,7 @@ class ScanWindow(QMainWindow):
 
     def _cat_2(self, subcategory):
         "Wybór produktu"
+        self.ui.category_2.clear()
         self.ui.stackedWidget_2.setCurrentIndex(2)
         for product1 in subcategory.cat:
             product = QListWidgetItem(product1)
@@ -123,12 +131,38 @@ class ScanWindow(QMainWindow):
         "Wyświetlenie okna dialogowego"
         self._add_product(product, amount)
         self.ui.stackedWidget.setCurrentIndex(0)
+        self.product = None
 
     def _add_product(self, category, amount):
         add_dialog = AddDialog(self)
         "Dodanie produktu do spiżarni"
+        add_to_storage(category, int(amount))
         "Wyświetlenie dodanego produktu"
-        add_dialog.setText(f"{category}: {amount}")
+        text = category+": "+amount
+        add_dialog.setText(text)
+        if add_dialog.exec_():
+            pass
+
+    def _sub2(self):
+        "Zatwierdzenie produktu i ilości"
+        self.ui.category_0.clear()
+        self.ui.category_1.clear()
+        self.ui.category_2.clear()
+        amount = self.ui.amount.text()
+        product = self.product
+        "Wyświetlenie okna dialogowego"
+        self._sub_product(product, amount)
+        self.ui.stackedWidget.setCurrentIndex(0)
+        self.product = None
+
+    def _sub_product(self, category, amount):
+        add_dialog = AddDialog(self)
+        "Usuwania produktu ze spiżarni"
+        subtract_from_storage(category, int(amount))
+        "Wyświetlenie dodanego produktu"
+        text = category+": "+amount
+        add_dialog.setText(text)
+        add_dialog.setTitle("USUNIĘTO:")
         if add_dialog.exec_():
             pass
 
@@ -145,10 +179,8 @@ class RecipeAvailableWindow(QMainWindow):
 
     def _set_recipe_list(self):
         "Uzupełnienie listy przepisów"
-        "Spiżarnia"
-        storage = get_storage()
         "Dostępne przepisy"
-        recipes = get_doable_recipes(storage)
+        recipes = get_doable_recipes()
         for recipe in recipes:
             item = QListWidgetItem(recipe.name())
             item.recipe = recipe
@@ -163,10 +195,9 @@ class RecipeAvailableWindow(QMainWindow):
     def _done(self):
         "Usunięcie ze spiżarni produktów"
         recipe = self.recipe
-        storage = get_storage()
-
+        sub_storage(recipe)
         done_dialog = DoneDialog(self)
-        text = str(recipe)
+        text = recipe.ingredients_str()
         done_dialog.setText(text)
         if done_dialog.exec_():
             pass
@@ -220,11 +251,10 @@ class RecipeAllWindow(QMainWindow):
 
     def _send(self):
         "Zatwierdzenie email"
-        lack_ingredients = self.recipe
         "Pobranie mail"
         mail = self.ui.mail_adress.text()
         "Wysłanie mail"
-        print(mail)
+        send_list(mail)
         self.close()
 
 
@@ -238,6 +268,9 @@ class AddDialog(QDialog):
     def setText(self, code):
         "Wyświetlenie dodanego produktu"
         self.ui.product.setText(code)
+
+    def setTitle(self, text):
+        self.ui.label.setText(text)
 
 
 class DoneDialog(QDialog):

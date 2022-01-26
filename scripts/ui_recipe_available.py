@@ -106,4 +106,3 @@ class Ui_RecipeAvailableWindow(object):
         self.close_button.setText(QCoreApplication.translate("RecipeAvailableWindow", u"ZAKO\u0143CZ", None))
     # retranslateUi
 
-

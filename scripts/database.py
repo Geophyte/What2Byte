@@ -1,11 +1,6 @@
 from load_save import load, file_path
 from recipe import Recipe
 
-
-def get_storage():
-    return load(file_path.storage)
-
-
 # Zwraca listę przepisów wczytaną z recipes_path
 def get_recipes() -> list:
     recipes_list = load(file_path.recipes)
@@ -39,3 +34,5 @@ if __name__ == "__main__":
 
     for recipe in get_doable_recipes(storage):
         print(recipe)
+
+

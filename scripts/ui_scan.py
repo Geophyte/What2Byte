@@ -63,6 +63,13 @@ class Ui_ScanWindow(object):
 
         self.horizontalLayout_2.addWidget(self.corfirm_button1)
 
+        self.sub_button = QPushButton(self.page)
+        self.sub_button.setObjectName(u"sub_button")
+        sizePolicy2.setHeightForWidth(self.sub_button.sizePolicy().hasHeightForWidth())
+        self.sub_button.setSizePolicy(sizePolicy2)
+
+        self.horizontalLayout_2.addWidget(self.sub_button)
+
         self.close_button = QPushButton(self.page)
         self.close_button.setObjectName(u"close_button")
         sizePolicy2.setHeightForWidth(self.close_button.sizePolicy().hasHeightForWidth())
@@ -175,6 +182,13 @@ class Ui_ScanWindow(object):
 
         self.horizontalLayout_3.addWidget(self.corfirm_button2)
 
+        self.sub_button_2 = QPushButton(self.page_2)
+        self.sub_button_2.setObjectName(u"sub_button_2")
+        sizePolicy2.setHeightForWidth(self.sub_button_2.sizePolicy().hasHeightForWidth())
+        self.sub_button_2.setSizePolicy(sizePolicy2)
+
+        self.horizontalLayout_3.addWidget(self.sub_button_2)
+
 
         self.verticalLayout_3.addLayout(self.horizontalLayout_3)
 
@@ -210,12 +224,13 @@ class Ui_ScanWindow(object):
         ScanWindow.setWindowTitle(QCoreApplication.translate("ScanWindow", u"MainWindow", None))
         self.label.setText(QCoreApplication.translate("ScanWindow", u"<html><head/><body><p><span style=\" font-size:20pt;\">SKANOWANIE</span></p></body></html>", None))
         self.code.setPlaceholderText(QCoreApplication.translate("ScanWindow", u"KOD KRESKOWY", None))
-        self.corfirm_button1.setText(QCoreApplication.translate("ScanWindow", u"ZATWIERD\u0179", None))
+        self.corfirm_button1.setText(QCoreApplication.translate("ScanWindow", u"DODAJ", None))
+        self.sub_button.setText(QCoreApplication.translate("ScanWindow", u"USU\u0143", None))
         self.close_button.setText(QCoreApplication.translate("ScanWindow", u"ZAKO\u0143CZ", None))
         self.label_2.setText(QCoreApplication.translate("ScanWindow", u"<html><head/><body><p><span style=\" font-size:18pt;\">W BAZIE NIE MA TAKIEGO KODU</span></p></body></html>", None))
         self.label_3.setText(QCoreApplication.translate("ScanWindow", u"<html><head/><body><p><span style=\" font-size:16pt;\">WYBIERZ KATEGORI\u0118</span></p></body></html>", None))
         self.label_4.setText(QCoreApplication.translate("ScanWindow", u"<html><head/><body><p><span style=\" font-size:16pt;\">ILO\u015a\u0106</span></p></body></html>", None))
-        self.corfirm_button2.setText(QCoreApplication.translate("ScanWindow", u"ZATWIERD\u0179", None))
+        self.corfirm_button2.setText(QCoreApplication.translate("ScanWindow", u"DODAJ", None))
+        self.sub_button_2.setText(QCoreApplication.translate("ScanWindow", u"USU\u0143", None))
     # retranslateUi
-
 
