@@ -123,6 +123,8 @@ class ScanWindow(QMainWindow):
 
     def _corfirm2(self):
         "Zatwierdzenie produktu i ilości"
+        if not self.product:
+            return
         self.ui.category_0.clear()
         self.ui.category_1.clear()
         self.ui.category_2.clear()
@@ -147,6 +149,8 @@ class ScanWindow(QMainWindow):
 
     def _sub2(self):
         "Zatwierdzenie produktu i ilości"
+        if not self.product:
+            return
         self.ui.category_0.clear()
         self.ui.category_1.clear()
         self.ui.category_2.clear()
