@@ -54,6 +54,14 @@ def make_shoping_list_text(shoping_list_file: file_path):
         current_date=get_date(),
         missing_product_list=fill_items(),
     )
+    msg = msg.replace("ą", "a")
+    msg = msg.replace("ę", "e")
+    msg = msg.replace("ł", "l")
+    msg = msg.replace("ć", "c")
+    msg = msg.replace("ź", "z")
+    msg = msg.replace("ż", "z")
+    msg = msg.replace("ś", "s")
+    msg = msg.replace("ó", "o")
     return msg
 
 
@@ -62,12 +70,7 @@ def get_date() -> str:
 
 
 if __name__ == "__main__":
-    ingredients = {
-        'a': 100,
-        'c': 400,
-        'b': 200,
-        'cc': 500
-    }
+    ingredients = {"a": 100, "c": 400, "b": 200, "cc": 500}
     shopping_list.add_items(ingredients)
 
     print(get_date())
