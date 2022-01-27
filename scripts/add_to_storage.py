@@ -7,6 +7,8 @@ def add_to_storage(category, amount):
     """
     storage = load(file_path.storage) # loaduje storage
     storage[category] = storage.get(category, 0) + amount # updatuje storage
+    if storage[category] < 0:
+        storage[category] = 0
     save(storage, file_path.storage) # savuje storage
 
 
