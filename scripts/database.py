@@ -34,5 +34,3 @@ if __name__ == "__main__":
 
     for recipe in get_doable_recipes(storage):
         print(recipe)
-
-

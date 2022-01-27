@@ -1,9 +1,5 @@
-# from pathlib import Path
-# import json
-
-# # ingredients - lista krotek (ingredients, ingredients_amount)
+# ingredients - lista krotek (ingredients, ingredients_amount)
 recipes_list = []
-# recipes_dict_name = Path(file).parent / "../data/recipes_dict.json"
 
 
 def add_recipe(name: str, ingredients: list, steps: list, recipes_list: list):

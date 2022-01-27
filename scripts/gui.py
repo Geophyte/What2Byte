@@ -9,7 +9,7 @@ from ui_recipe_available import Ui_RecipeAvailableWindow
 from ui_recipe_all import Ui_RecipeAllWindow
 from ui_storage import Ui_StorageWindow
 from ui_ingredients import Ui_DoneDialog
-import categoriesss
+import categories
 from categories_file import categories_dict
 from make_product_base import bool_scan, get_product, add_to_storage, get_recipes, get_doable_recipes, get_storage, sub_storage, subtract_from_storage
 from send_mail import send_list
@@ -92,11 +92,11 @@ class ScanWindow(QMainWindow):
         "Wybór pierwszej kategorii"
         self.ui.stackedWidget.setCurrentIndex(1)
         self.ui.stackedWidget_2.setCurrentIndex(0)
-        categor = categoriesss.product_categories(categories_dict)
+        categor = categories.product_categories(categories_dict)
         for category in categor:
             item = QListWidgetItem(category)
             item.item = category
-            item.categories = categoriesss.product_subcategories(categories_dict, category)
+            item.categories = categories.product_subcategories(categories_dict, category)
             self.ui.category_0.addItem(item)
 
     def _cat_1(self, item):
@@ -104,7 +104,7 @@ class ScanWindow(QMainWindow):
         self.ui.stackedWidget_2.setCurrentIndex(1)
         for subcategory1 in item.categories:
             subcategory = QListWidgetItem(subcategory1)
-            subcategory.cat = categoriesss.product_names(categories_dict, item.item, subcategory1)
+            subcategory.cat = categories.product_names(categories_dict, item.item, subcategory1)
             self.ui.category_1.addItem(subcategory)
         self.ui.category_1.itemClicked.connect(self._cat_2)
 
